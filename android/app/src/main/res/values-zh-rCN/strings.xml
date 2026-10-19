@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ViPER4Shizuku</string>
+    <string name="notification_channel_name">音频处理</string>
+    <string name="notification_channel_description">当 ViPER4Shizuku 正在处理音频时显示</string>
+    <string name="notification_title">ViPER4Shizuku</string>
+    <string name="notification_text">音频处理已激活</string>
+    <string name="notification_text_capture">正在处理系统音频</string>
+    <string name="notification_text_player">正在播放 %1$s</string>
+    <string name="notification_action_stop">停止</string>
+    <string name="notification_bulk_op_channel_name">批量操作</string>
+    <string name="notification_bulk_op_channel_description">批量操作进度</string>
+    <string name="qs_tile_master_label">总开关</string>
+
+    <!-- Master -->
+    <string name="master_enable">总开关</string>
+    <string name="menu_presets">预设</string>
+    <string name="menu_settings">设置</string>
+    <string name="menu_devices">设备</string>
+    <string name="menu_audio_source">音频来源</string>
+    <string name="menu_engine_status">引擎状态</string>
+
+    <!-- Common -->
+    <string name="label_max_gain">最大增益</string>
+    <string name="label_threshold">阈值</string>
+    <string name="label_gain">增益</string>
+    <string name="label_attack">启动时间</string>
+    <string name="label_release">释放</string>
+    <string name="label_strength">强度</string>
+    <string name="label_frequency">频率</string>
+    <string name="label_width">宽度</string>
+    <string name="label_depth">深度</string>
+    <string name="label_delay">延时</string>
+    <string name="label_mode">模式</string>
+    <string name="label_off">关</string>
+    <string name="label_preset">预设</string>
+    <string name="label_custom">自定义</string>
+    <string name="label_none">无</string>
+    <string name="label_mild">弱</string>
+    <string name="label_medium">中</string>
+    <string name="label_strong">强</string>
+
+    <!-- Numeric input dialog -->
+    <string name="dialog_value_range">范围: %1$s \u2013 %2$s</string>
+    <string name="dialog_value_range_unit">范围: %1$s \u2013 %2$s %3$s</string>
+
+    <!-- Output / Master limiter -->
+    <string name="section_master_limiter">主控制器</string>
+    <string name="label_output_volume">输出增益</string>
+    <string name="label_output_pan">音量平衡</string>
+    <string name="label_output_limiter">阈值限制</string>
+
+    <!-- AGC -->
+    <string name="section_agc">回放增益控制</string>
+    <string name="label_agc_output_threshold">输出阈值</string>
+
+    <!-- LUFS Targeting -->
+    <string name="section_lufs_targeting">响度均衡</string>
+    <string name="label_lufs_target_lufs">目标响度</string>
+    <string name="label_lufs_speed">响应速度</string>
+    <string name="label_lufs_speed_slow">慢</string>
+    <string name="label_lufs_speed_medium">中</string>
+    <string name="label_lufs_speed_fast">快</string>
+
+    <!-- FET Compressor -->
+    <string name="section_fet_compressor">场效应压缩器</string>
+    <string name="label_fet_ratio">压缩比</string>
+    <string name="label_fet_knee">拐点</string>
+    <string name="label_fet_auto_knee">自动拐点</string>
+    <string name="label_fet_knee_multi">拐点倍率</string>
+    <string name="label_fet_auto_gain">自动增益</string>
+    <string name="label_fet_auto_attack">自动启动</string>
+    <string name="label_fet_max_attack">最大启动</string>
+    <string name="label_fet_auto_release">自动释放</string>
+    <string name="label_fet_max_release">最大释放</string>
+    <string name="label_fet_crest">峰值因数</string>
+    <string name="label_fet_adapt">自适应</string>
+    <string name="label_fet_no_clip">无削波</string>
+
+    <!-- Multiband Compressor -->
+    <string name="section_multiband_compressor">多段压缩器</string>
+    <string name="label_band_enabled">启用频段</string>
+    <string name="label_upper_crossover">上分频点</string>
+
+    <!-- DDC -->
+    <string name="section_ddc">ViPER-DDC</string>
+    <string name="label_ddc_device">耳机校正文件</string>
+
+    <!-- Spectrum Extension -->
+    <string name="section_spectrum_extension">频谱扩展</string>
+    <string name="label_vse_exciter">激励器</string>
+
+    <!-- Equalizer -->
+    <string name="section_equalizer">FIR 均衡器</string>
+    <string name="label_eq_bands">频段数量</string>
+    <string name="label_eq_n_bands">%d 频段</string>
+
+    <!-- Dynamic EQ -->
+    <string name="section_dynamic_eq">动态均衡器</string>
+    <string name="label_dynamic_eq_q_factor">Q 值</string>
+    <string name="label_dynamic_eq_target_gain">目标增益</string>
+    <string name="label_dynamic_eq_filter_type">滤波类型</string>
+    <string name="dialog_delete_band">删除频段</string>
+    <string name="dialog_delete_band_confirm">Remove %1$s Band?</string>
+
+    <!-- Convolver -->
+    <string name="section_convolver">脉冲卷积器</string>
+    <string name="label_convolver_kernel">样本文件</string>
+    <string name="label_convolver_cross_channel">通道交叉</string>
+
+    <!-- Field Surround -->
+    <string name="section_field_surround">场环绕</string>
+    <string name="label_field_surround_widening">环绕强度</string>
+    <string name="label_field_surround_mid_image">中央强度</string>
+
+    <!-- Differential Surround -->
+    <string name="section_diff_surround">差分环绕</string>
+    <string name="label_diff_surround_reverse">反相</string>
+    <string name="label_diff_surround_wet_dry_mix">干湿混合率</string>
+    <string name="label_diff_surround_lp_cutoff">低通截止频率</string>
+
+    <!-- Stereo Imager -->
+    <string name="section_stereo_imager">立体声</string>
+    <string name="label_stereo_imager_low_width">低频宽度</string>
+    <string name="label_stereo_imager_mid_width">中频宽度</string>
+    <string name="label_stereo_imager_high_width">高频宽度</string>
+    <string name="label_stereo_imager_low_crossover">低分频点</string>
+    <string name="label_stereo_imager_high_crossover">高分频点</string>
+
+    <!-- Headphone Surround -->
+    <string name="section_headphone_surround">耳机环绕声+</string>
+    <string name="label_vhe_quality">质量等级</string>
+
+    <!-- Reverberation -->
+    <string name="section_reverb">混响</string>
+    <string name="label_reverb_room_size">空间大小</string>
+    <string name="label_reverb_dampening">阻尼</string>
+    <string name="label_reverb_wet">湿信号</string>
+    <string name="label_reverb_dry">干信号</string>
+
+    <!-- Dynamic System -->
+    <string name="section_dynamic_system">动态系统</string>
+    <string name="label_dynamic_system_strength">动态低音强度</string>
+    <string name="label_dynamic_system_x_low_freq">X 低频</string>
+    <string name="label_dynamic_system_x_high_freq">X 高频</string>
+    <string name="label_dynamic_system_y_low_freq">Y 低频</string>
+    <string name="label_dynamic_system_y_high_freq">Y 高频</string>
+    <string name="label_dynamic_system_side_gain_low">低频侧边增益</string>
+    <string name="label_dynamic_system_side_gain_high">高频侧边增益</string>
+
+    <!-- Tube Simulator -->
+    <string name="section_tube_simulator">电子管模拟器</string>
+    <string name="label_tube_model">Tube Model</string>
+    <string name="label_tube_model_12ax7">12AX7</string>
+    <string name="label_tube_model_12au7">12AU7</string>
+    <string name="label_tube_model_6n1p">6N1P</string>
+    <string name="label_tube_drive">Drive</string>
+    <string name="label_tube_mix">Wet/Dry Mix</string>
+
+    <!-- Psychoacoustic Bass -->
+    <string name="section_psycho_bass">虚拟低音</string>
+    <string name="label_psycho_bass_cutoff">截止频率</string>
+    <string name="label_psycho_bass_intensity">强度</string>
+    <string name="label_psycho_bass_harmonic_order">谐波类型</string>
+    <string name="label_psycho_bass_ori_bass_level">原始低音保留</string>
+
+    <!-- ViPER Bass -->
+    <string name="section_viper_bass">ViPER 低音</string>
+    <string name="label_bass_anti_pop">淡入</string>
+
+    <!-- ViPER Bass Mono -->
+    <string name="section_viper_bass_mono">ViPER 单声道低音</string>
+
+    <!-- ViPER Clarity -->
+    <string name="section_viper_clarity">ViPER 清晰度</string>
+
+    <!-- Cure -->
+    <string name="section_cure">听觉系统保护</string>
+    <string name="label_cure_strength">保护强度</string>
+
+    <!-- AnalogX -->
+    <string name="section_analogx">AnalogX</string>
+
+    <!-- Speaker Optimization -->
+    <string name="section_speaker_optimization">扬声器优化</string>
+
+    <!-- Filter Type -->
+    <string name="filter_peak">峰值</string>
+    <string name="filter_low_shelf">低频升降</string>
+    <string name="filter_high_shelf">高频升降</string>
+
+    <!-- Harmonic Order -->
+    <string name="harmonic_2nd">第二</string>
+    <string name="harmonic_3rd">第三</string>
+    <string name="harmonic_4th">第四</string>
+    <string name="harmonic_5th">第五</string>
+
+    <!-- Bass modes -->
+    <string name="bass_mode_natural">自然低音</string>
+    <string name="bass_mode_pure">纯净低音+</string>
+    <string name="bass_mode_subwoofer">超重低音</string>
+
+    <!-- Clarity modes -->
+    <string name="clarity_mode_natural">自然</string>
+    <string name="clarity_mode_ozone">OZone+</string>
+    <string name="clarity_mode_xhifi">XHiFi</string>
+
+    <!-- Presets -->
+    <string name="preset_save_title">保存预设</string>
+    <string name="preset_rename_title">重命名预设</string>
+    <string name="preset_name_hint">预设名称</string>
+    <string name="preset_empty">没有已保存的预设</string>
+    <string name="preset_save_current">保存当前预设</string>
+    <string name="preset_clear_all">全部清除</string>
+    <string name="preset_clear_all_title">清除全部预设</string>
+    <string name="preset_clear_all_confirm">确定删除 %1$d 个预设? 此操作无法撤销</string>
+    <string name="preset_clear_all_progress">正在清除预设</string>
+    <string name="preset_cleared">已清除</string>
+    <string name="preset_update_title">更新预设</string>
+    <string name="preset_update_confirm">确定用当前设置覆盖 "%1$s"? 此操作无法撤销</string>
+    <string name="preset_load_title">加载预设</string>
+    <string name="preset_load_confirm">确定加载 "%1$s"? 当前设置将被替换.</string>
+    <string name="preset_delete_title">删除预设</string>
+    <string name="preset_delete_confirm">确定删除 "%1$s"? 此操作不可逆.</string>
+    <string name="preset_tap_for_details">点击查看详情</string>
+    <string name="preset_label_created">已创建</string>
+    <string name="preset_label_updated">最后更新</string>
+
+    <!-- Engine Status -->
+    <string name="engine_not_running">引擎未运行</string>
+    <string name="engine_version_name">版本名</string>
+    <string name="engine_architecture">架构</string>
+    <string name="engine_streaming">音频流</string>
+    <string name="engine_sampling_rate">采样率</string>
+    <string name="engine_processed_frames">已处理帧数</string>
+    <string name="engine_kernel_id">卷积内核 ID</string>
+    <string name="status_active">处理中</string>
+    <string name="status_inactive">未处理</string>
+    <string name="status_unknown">未知</string>
+
+    <!-- Audio source -->
+    <string name="source_capture_section">系统音频（Shizuku）</string>
+    <string name="source_player_section">本地文件</string>
+    <string name="source_status">状态</string>
+    <string name="source_last_error">上次错误：%1$s</string>
+    <string name="capture_status_unavailable">Shizuku 未运行</string>
+    <string name="capture_status_permission">需要 Shizuku 授权</string>
+    <string name="capture_status_ready">就绪</string>
+    <string name="capture_status_starting">正在启动…</string>
+    <string name="capture_status_capturing">正在捕获</string>
+    <string name="capture_open_shizuku">打开 Shizuku</string>
+    <string name="capture_open_shizuku_desc">通过无线调试启动它。每次重启后都需要重新启动。</string>
+    <string name="capture_shizuku_missing">无法打开 Shizuku</string>
+    <string name="capture_grant">授予权限</string>
+    <string name="capture_grant_desc">允许 ViPER4Shizuku 通过 Shizuku 运行捕获服务</string>
+    <string name="capture_start">开始捕获</string>
+    <string name="capture_start_desc">让其他应用的媒体声音经过 ViPER4Shizuku</string>
+    <string name="capture_stop">停止捕获</string>
+    <string name="capture_stop_desc">媒体声音恢复直接播放</string>
+    <string name="capture_latency">缓冲延迟</string>
+    <string name="capture_latency_value">%1$d 毫秒</string>
+    <string name="capture_underruns">欠载次数</string>
+    <string name="capture_dropped">丢弃帧数</string>
+    <string name="capture_note">已排除的应用直接播放。通话、通知、闹钟和铃声从不被捕获。</string>
+    <string name="player_now_playing">正在播放</string>
+    <string name="player_choose_file">选择文件</string>
+    <string name="player_choose_file_desc">通过 ViPER4Shizuku 播放音频文件</string>
+    <string name="player_play">播放</string>
+    <string name="player_play_desc">继续播放文件</string>
+    <string name="player_pause">暂停</string>
+    <string name="player_pause_desc">暂停文件</string>
+    <string name="player_stop">停止</string>
+    <string name="player_stop_desc">停止并关闭文件</string>
+
+    <!-- Settings -->
+    <string name="settings_general_section">通用</string>
+    <string name="settings_files_section">文件</string>
+    <string name="settings_about_section">关于</string>
+    <string name="settings_excluded_apps">排除的应用</string>
+    <string name="settings_import_preset">导入预设</string>
+    <string name="settings_import_kernel">导入内核</string>
+    <string name="settings_import_vdc">导入 VDC</string>
+    <string name="settings_excluded_apps_desc">这些应用的声音直接播放，不经过 ViPER4Shizuku</string>
+    <string name="settings_import_preset_desc">加载 json 预设文件</string>
+    <string name="settings_import_kernel_desc">卷积器脉冲响应</string>
+    <string name="settings_import_vdc_desc">DDC 校准文件</string>
+    <string name="settings_engine_version">引擎版本</string>
+    <string name="settings_engine_arch">引擎架构</string>
+    <string name="settings_app_version">应用版本</string>
+    <string name="settings_credits">基于 likelikeslike 的 ViPER4Android（GPL-3.0）。DSP：ViPERDSP，由 ViPER520 与 Zhuhang 的 ViPER4Android 逆向工程而来（Copyright (C) 2010-2017 ViPER ACOUSTICS / 蝰蛇声学）。仅限个人非商业使用。非官方应用，与 ViPER\'s Audio 无关。</string>
+    <string name="import_success">导入成功</string>
+    <string name="import_failed">导入失败</string>
+
+    <!-- Excluded Apps -->
+    <string name="excluded_apps_title">排除的应用</string>
+    <string name="excluded_apps_search">搜索应用</string>
+    <string name="excluded_apps_loading">正在加载应用\u2026</string>
+    <string name="excluded_apps_show_system">显示系统应用</string>
+
+    <!-- Devices -->
+    <string name="device_dialog_title">设备</string>
+    <string name="device_type_bluetooth">蓝牙</string>
+    <string name="device_type_wired">有线耳机</string>
+    <string name="device_type_speaker">扬声器</string>
+    <string name="device_mode_headphone">耳机</string>
+    <string name="device_mode_speaker">扬声器</string>
+    <string name="device_label_type">类型</string>
+    <string name="device_label_address">地址</string>
+    <string name="device_label_last_conn">上次连接</string>
+    <string name="device_no_devices">无已保存设备</string>
+    <string name="device_rename_title">重命名设备</string>
+    <string name="device_update_title">更新设备预设</string>
+    <string name="device_update_confirm">确定用当前设置覆盖 "%1$s"? 此操作无法撤销</string>
+    <string name="device_load_title">加载设备预设</string>
+    <string name="device_load_confirm">确定加载 "%1$s" 预设? 当前设置将被替换.</string>
+    <string name="device_delete_title">删除设备预设</string>
+    <string name="device_delete_confirm">确定删除为 "%1$s" 保存的预设? 此操作不可逆.</string>
+
+    <!-- Actions -->
+    <string name="action_save">保存</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_close">关闭</string>
+    <string name="action_rename">重命名</string>
+    <string name="action_reset">重置</string>
+    <string name="action_load">加载</string>
+    <string name="action_update">更新</string>
+    <string name="action_delete">删除</string>
+    <string name="action_clear">清除</string>
+
+    <!-- Debug -->
+    <string name="debug_log_title">调试日志</string>
+    <string name="debug_mode_enabled">调试模式已启用</string>
+    <string name="debug_already_enabled">调试模式已处于启用状态</string>
+    <string name="debug_search_hint">筛选日志\u2026</string>
+    <string name="debug_disable_debug">禁用调试</string>
+    <string name="debug_export_title">导出日志</string>
+    <string name="debug_export_confirm">将应用和 logcat 日志保存到外部存储?\n\n%1$s\n%2$s</string>
+    <string name="debug_export_action">导出</string>
+    <string name="debug_export_done">日志已导出到 %1$s</string>z
+    <string name="debug_export_failed">导出失败</string>
+
+    <!-- Debug filters -->
+    <string name="debug_filter_all">全部</string>
+    <string name="debug_filter_info">信息</string>
+    <string name="debug_filter_debug">调试</string>
+    <string name="debug_filter_warn">警告</string>
+    <string name="debug_filter_error">错误</string>
+    <string name="debug_filter_app">应用</string>
+    <string name="delete_file_title">删除文件</string>
+    <string name="delete_file_message">确认删除 "%1$s"?</string>
+
+    <!-- EQ presets -->
+    <string name="eq_preset_acoustic">原声</string>
+    <string name="eq_preset_bass_booster">低音增强</string>
+    <string name="eq_preset_bass_reducer">低音削弱</string>
+    <string name="eq_preset_classical">古典</string>
+    <string name="eq_preset_deep">深沉</string>
+    <string name="eq_preset_flat">均衡</string>
+    <string name="eq_preset_rnb">节奏蓝调</string>
+    <string name="eq_preset_rock">摇滚</string>
+    <string name="eq_preset_small_speakers">小型音响</string>
+    <string name="eq_preset_treble_booster">高音增强</string>
+    <string name="eq_preset_treble_reducer">高音削弱</string>
+    <string name="eq_preset_vocal_booster">人声增强</string>
+
+    <!-- Dynamic System device presets -->
+    <string name="ds_device_extreme_headphone_v2">极致耳机 (v2)</string>
+    <string name="ds_device_high_end_headphone_v2">高端耳机 (v2)</string>
+    <string name="ds_device_common_headphone_v2">普通耳机 (v2)</string>
+    <string name="ds_device_low_end_headphone_v2">入门耳机 (v2)</string>
+    <string name="ds_device_common_earphone_v2">普通耳塞 (v2)</string>
+    <string name="ds_device_extreme_headphone_v1">极致耳机 (v1)</string>
+    <string name="ds_device_high_end_headphone_v1">高端耳机 (v1)</string>
+    <string name="ds_device_common_headphone_v1">普通耳机 (v1)</string>
+    <string name="ds_device_common_earphone_v1">普通耳塞 (v1)</string>
+</resources>

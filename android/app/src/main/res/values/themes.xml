@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- The system splash screen exists from API 31; values-v31 adds its attributes. -->
+    <style name="Theme.ViPER4Shizuku" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

@@ -1,0 +1,225 @@
+package dev.theiceji.viper4shizuku.data.repository
+
+import android.annotation.SuppressLint
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.floatPreferencesKey
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
+import dev.theiceji.viper4shizuku.data.dao.DeviceSettingsDao
+import dev.theiceji.viper4shizuku.data.dao.DsPresetDao
+import dev.theiceji.viper4shizuku.data.dao.EqPresetDao
+import dev.theiceji.viper4shizuku.data.dao.PresetDao
+import dev.theiceji.viper4shizuku.data.model.DeviceSettings
+import dev.theiceji.viper4shizuku.data.model.DsPreset
+import dev.theiceji.viper4shizuku.data.model.EqPreset
+import dev.theiceji.viper4shizuku.data.model.Preset
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@SuppressLint("DiscouragedPrivateApi", "PrivateApi")
+@Singleton
+class ViperRepository
+    @Inject
+    constructor(
+        private val presetDao: PresetDao,
+        private val eqPresetDao: EqPresetDao,
+        private val dsPresetDao: DsPresetDao,
+        private val deviceSettingsDao: DeviceSettingsDao,
+        private val dataStore: DataStore<Preferences>,
+    ) {
+        fun getAllPresets(): Flow<List<Preset>> = presetDao.getAll()
+
+        suspend fun getPresetById(id: Long): Preset? = presetDao.getById(id)
+
+        suspend fun savePreset(preset: Preset): Long = presetDao.insert(preset)
+
+        suspend fun updatePreset(preset: Preset) = presetDao.update(preset)
+
+        suspend fun deletePresetById(id: Long) = presetDao.deleteById(id)
+
+        suspend fun deleteAllPresets() = presetDao.deleteAll()
+
+        fun getEqPresetsByBandCount(bandCount: Int): Flow<List<EqPreset>> = eqPresetDao.getByBandCount(bandCount)
+
+        suspend fun getEqPresetById(id: Long): EqPreset? = eqPresetDao.getById(id)
+
+        suspend fun saveEqPreset(preset: EqPreset): Long = eqPresetDao.insert(preset)
+
+        suspend fun deleteEqPresetById(id: Long) = eqPresetDao.deleteById(id)
+
+        fun getAllDsPresets(): Flow<List<DsPreset>> = dsPresetDao.getAll()
+
+        suspend fun getDsPresetById(id: Long): DsPreset? = dsPresetDao.getById(id)
+
+        suspend fun saveDsPreset(preset: DsPreset): Long = dsPresetDao.insert(preset)
+
+        suspend fun deleteDsPresetById(id: Long) = dsPresetDao.deleteById(id)
+
+        fun getAllDeviceSettings(): Flow<List<DeviceSettings>> = deviceSettingsDao.getAll()
+
+        suspend fun getDeviceSettings(deviceId: String): DeviceSettings? = deviceSettingsDao.getByDeviceId(deviceId)
+
+        suspend fun saveDeviceSettings(settings: DeviceSettings) = deviceSettingsDao.upsert(settings)
+
+        suspend fun renameDevice(
+            deviceId: String,
+            name: String,
+        ) = deviceSettingsDao.rename(deviceId, name)
+
+        suspend fun deleteDeviceSettings(deviceId: String) = deviceSettingsDao.deleteByDeviceId(deviceId)
+
+        suspend fun updateDeviceLastConnected(deviceId: String) =
+            deviceSettingsDao.updateLastConnected(deviceId, System.currentTimeMillis())
+
+        fun getBooleanPreference(
+            key: String,
+            default: Boolean = false,
+        ): Flow<Boolean> =
+            flow {
+                ensureV2Initialized()
+                emitAll(dataStore.data.map { it[booleanPreferencesKey(key)] ?: default })
+            }
+
+        suspend fun setBooleanPreference(
+            key: String,
+            value: Boolean,
+        ) {
+            ensureV2Initialized()
+            dataStore.edit { it[booleanPreferencesKey(key)] = value }
+        }
+
+        suspend fun editPreferences(block: (androidx.datastore.preferences.core.MutablePreferences) -> Unit) {
+            ensureV2Initialized()
+            dataStore.edit(block)
+        }
+
+        fun getIntPreference(
+            key: String,
+            default: Int = 0,
+        ): Flow<Int> =
+            flow {
+                ensureV2Initialized()
+                emitAll(dataStore.data.map { it[intPreferencesKey(key)] ?: default })
+            }
+
+        suspend fun setIntPreference(
+            key: String,
+            value: Int,
+        ) {
+            ensureV2Initialized()
+            dataStore.edit { it[intPreferencesKey(key)] = value }
+        }
+
+        fun getFloatPreference(
+            key: String,
+            default: Float = 0.0f,
+        ): Flow<Float> =
+            flow {
+                ensureV2Initialized()
+                emitAll(
+                    dataStore.data.map { prefs ->
+                        when (
+                            val value =
+                                prefs
+                                    .asMap()
+                                    .entries
+                                    .firstOrNull { it.key.name == key }
+                                    ?.value
+                        ) {
+                            is Float -> value
+                            is Int -> value.toFloat()
+                            is Long -> value.toFloat()
+                            is Double -> value.toFloat()
+                            else -> default
+                        }
+                    },
+                )
+            }
+
+        suspend fun setFloatPreference(
+            key: String,
+            value: Float,
+        ) {
+            ensureV2Initialized()
+            dataStore.edit { it[floatPreferencesKey(key)] = value }
+        }
+
+        fun getStringPreference(
+            key: String,
+            default: String = "",
+        ): Flow<String> =
+            flow {
+                ensureV2Initialized()
+                emitAll(dataStore.data.map { it[stringPreferencesKey(key)] ?: default })
+            }
+
+        suspend fun setStringPreference(
+            key: String,
+            value: String,
+        ) {
+            ensureV2Initialized()
+            dataStore.edit { it[stringPreferencesKey(key)] = value }
+        }
+
+        fun getStringSetPreference(key: String): Flow<Set<String>> =
+            flow {
+                ensureV2Initialized()
+                emitAll(
+                    dataStore.data.map { prefs ->
+                        prefs[stringPreferencesKey(key)]
+                            ?.split('\n')
+                            ?.filter { it.isNotEmpty() }
+                            ?.toSet()
+                            .orEmpty()
+                    },
+                )
+            }
+
+        suspend fun setStringSetPreference(
+            key: String,
+            value: Set<String>,
+        ) {
+            ensureV2Initialized()
+            dataStore.edit { it[stringPreferencesKey(key)] = value.joinToString("\n") }
+        }
+
+        @Volatile private var initDone = false
+        private val initMutex = Mutex()
+
+        suspend fun ensureV2Initialized() {
+            if (initDone) return
+            initMutex.withLock {
+                if (initDone) return
+                val flag =
+                    dataStore.data.map {
+                        it[booleanPreferencesKey(PREF_V2_INITIALIZED)] ?: false
+                    }
+                if (flag.first()) {
+                    initDone = true
+                    return
+                }
+                dataStore.edit { prefs ->
+                    prefs.clear()
+                    prefs[booleanPreferencesKey(PREF_V2_INITIALIZED)] = true
+                }
+                initDone = true
+            }
+        }
+
+        companion object {
+            const val PREF_MASTER_ENABLE = "master_enable"
+            const val PREF_DEBUG_MODE = "debug_mode"
+            const val PREF_V2_INITIALIZED = "v2_initialized"
+            const val PREF_EXCLUDED_APPS = "excluded_apps"
+        }
+    }

@@ -1,0 +1,22 @@
+# Android / Gradle (the project lives in android/)
+*.iml
+.gradle
+.idea/
+.DS_Store
+build/
+.externalNativeBuild
+.cxx
+local.properties
+.kotlin/
+/android/captures
+/tmp
+/out
+*.jks
+*.keystore
+
+# Local AI-assistant settings
+.claude/
+
+# Built APKs stay local: they bundle ViPERDSP, which must not be redistributed (see README)
+/builds/**/*.apk
+/builds/**/*.aab
